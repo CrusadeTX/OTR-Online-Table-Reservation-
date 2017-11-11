@@ -1,0 +1,41 @@
+﻿@model List<DataAccess.Entities.Restaurant>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Restaurants</h2>
+@Html.ActionLink("Add","Add","Restaurants")
+<table class="table">
+
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Capacity</th>
+        <th>OpenHour</th>
+        <th>CloseHour</th>
+    </tr>
+    </thead>
+    <tbody>
+        @foreach (var restaurant in Model)
+        {
+            <tr>
+                <td>@restaurant.Name</td>
+                <td>@restaurant.Address</td>
+                <td>@restaurant.Email</td>
+                <td>@restaurant.Phone</td>
+                <td>@restaurant.Capacity</td>
+                <td>@restaurant.OpenHour</td>
+                <td>@restaurant.CloseHour</td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Restaurants",new {id=restaurant.Id },null)
+                    @Html.ActionLink("Delete", "Delete", "Restaurants", new { id = restaurant.Id }, null)
+
+                </td>
+            </tr>
+        }
+</tbody>
+</table>
+
