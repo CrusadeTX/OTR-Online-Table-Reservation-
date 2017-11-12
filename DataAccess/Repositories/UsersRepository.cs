@@ -14,7 +14,8 @@ namespace DataAccess.Repositories
         private DbSet<User> dbSet;
         public UsersRepository()
         {
-
+            db = new BookATableContext();
+            dbSet = db.Set<User>();
         }
         public List<User> GetAll()
         {
@@ -25,10 +26,17 @@ namespace DataAccess.Repositories
         {
             return dbSet.Find(id);
         }
-        public User Insert(User entity)
+        public void Insert(User entity)
         {
-            return dbSet.Add(entity);
+            db.Entry(entity).State = EntityState.Added;
             db.SaveChanges();
+
+        }
+        public void Delete(User entity)
+        {
+            db.Entry(entity).State = EntityState.Deleted;
+            db.SaveChanges();
+
         }
         public void Update(User entity)
         {

@@ -14,7 +14,8 @@ namespace DataAccess.Repositories
         private DbSet<Reservation> dbSet;
         public ReservationsRepository()
         {
-
+            db = new BookATableContext();
+            dbSet = db.Set<Reservation>();
         }
         public List<Reservation> GetAll()
         {
@@ -25,14 +26,19 @@ namespace DataAccess.Repositories
         {
             return dbSet.Find(id);
         }
-        public Reservation Insert (Reservation entity)
+        public void Insert (Reservation entity)
         {
-            return dbSet.Add(entity);
+            db.Entry(entity).State = EntityState.Added;
             db.SaveChanges();
         }
         public void Update(Reservation entity)
         {
             db.Entry(entity).State = EntityState.Modified;
+            db.SaveChanges();
+        }
+        public void Delete(Reservation entity)
+        {
+            db.Entry(entity).State = EntityState.Deleted;
             db.SaveChanges();
         }
     }

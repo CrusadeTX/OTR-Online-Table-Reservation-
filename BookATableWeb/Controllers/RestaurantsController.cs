@@ -23,6 +23,9 @@ namespace BookATableWeb.Controllers
 
         public ActionResult Create()
         {
+
+            UsersRepository rep = new UsersRepository();
+            ViewBag.ManagerId = new SelectList(rep.GetAll(), "Id", "Name");
             return View();
         }
         [HttpPost]
@@ -40,6 +43,7 @@ namespace BookATableWeb.Controllers
             restaurant.CloseHour = model.CloseHour;
             restaurant.Phone = model.Phone;
             restaurant.Capacity = model.Capacity;
+            restaurant.ManagerId = model.ManagerId;
             RestaurantsRepository repository = new RestaurantsRepository();
             repository.Insert(restaurant);
             return RedirectToAction("Index");

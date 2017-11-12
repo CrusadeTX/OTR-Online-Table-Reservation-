@@ -21,5 +21,6 @@ namespace BookATableWeb.ViewModels
         public DateTime OpenHour {get;set;}
         [Required]
         public DateTime CloseHour { get; set; }
+        public int ManagerId { get; set; }
     }
 }
