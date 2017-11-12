@@ -49,5 +49,31 @@ namespace BookATableWeb.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult Edit (Restaurant restaurant)
+        {
+            RestaurantsRepository repo = new RestaurantsRepository();
+            Restaurant dbrestaurant = new Restaurant();
+                dbrestaurant = repo.Get(restaurant.Id);
+                return View(dbrestaurant);
+
+            
+
+            
+           
+        }
+        public ActionResult Delete()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Delete (Restaurant restaurant)
+        {
+            RestaurantsRepository rep = new RestaurantsRepository();
+
+            rep.Delete(restaurant);
+            return RedirectToAction("Index");
+        }
+        
+
     }
 }
