@@ -49,15 +49,51 @@ namespace BookATableWeb.Controllers
             return RedirectToAction("Index");
         }
         
-        public ActionResult Edit(Restaurant restaurant)
+        public ActionResult Edit(int Id)
         {
+
             RestaurantsRepository repo = new RestaurantsRepository();
             Restaurant dbrestaurant = new Restaurant();
-            dbrestaurant = repo.Get(restaurant.Id);
-            return View(dbrestaurant);
+            dbrestaurant = repo.Get(Id);
+            RestaurantsEditViewModel model = new RestaurantsEditViewModel();
+            model.Address = dbrestaurant.Address;
+            model.Capacity = dbrestaurant.Capacity;
+            model.Email = dbrestaurant.Email;
+            model.Name = dbrestaurant.Name;
+            model.Phone = dbrestaurant.Phone;
+            model.OpenHour = dbrestaurant.OpenHour;
+            model.ManagerId = dbrestaurant.ManagerId;
+            model.CloseHour = dbrestaurant.CloseHour;
+            model.Id = Id;
+            UsersRepository rep = new UsersRepository();
+            ViewBag.ManagerId = new SelectList(rep.GetAll(), "Id", "Name");
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult Edit(RestaurantsEditViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            Restaurant rest = new Restaurant();
+            rest.Id = model.Id;
+            rest.ManagerId = model.ManagerId;
+            rest.Name = model.Name;
+            rest.OpenHour = model.OpenHour;
+            rest.CloseHour = model.CloseHour;
+            rest.Capacity = model.Capacity;
+            rest.Email = model.Email;
+            rest.Phone = model.Phone;
+            rest.Address = model.Address;
+            RestaurantsRepository repo = new RestaurantsRepository();
+            repo.Update(rest);
+
+            return RedirectToAction("Index");
+
         }
 
-     
+
 
 
 
