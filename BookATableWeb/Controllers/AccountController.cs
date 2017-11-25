@@ -13,7 +13,6 @@ using BookATableWeb.Models;
 namespace BookATableWeb.Controllers
 {
 
-    /*Jesus was black*/
     [Authorize]
     public class AccountController : Controller
     {

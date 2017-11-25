@@ -11,7 +11,6 @@ namespace DataAccess.Repositories
     public class UsersRepository
     {
 
-        //Jesus is black
         private DbContext db;
         private DbSet<User> dbSet;
         public UsersRepository()
