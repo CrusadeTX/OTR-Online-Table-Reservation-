@@ -15,6 +15,7 @@ namespace BookATableWeb.Controllers
         public ActionResult Index()
         {
             UsersRepository rep = new UsersRepository();
+            //
             
             UsersListViewModel model = new UsersListViewModel();
             model.users = rep.GetAll();
