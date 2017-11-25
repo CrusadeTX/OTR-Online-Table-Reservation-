@@ -1,0 +1,36 @@
+﻿@model BookATableWeb.ViewModels.UsersListViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Users</h2>
+@Html.ActionLink("Create", "Create", "User")
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.users)
+        {
+     
+           
+                <tr>
+                    <td>@user.Name</td>
+                    <td>@user.Email</td>
+                    <td>@user.Phone</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Users", new { id = user.Id }, null)
+                        |
+                        @Html.ActionLink("Delete", "Delete", "Users", new { id = user.Id }, null)
+
+                    </td>
+                </tr>
+            
+        }
+    </tbody>
+</table>
