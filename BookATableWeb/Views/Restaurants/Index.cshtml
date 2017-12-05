@@ -33,8 +33,8 @@
                 <td>@restaurant.Email</td>
                 <td>@restaurant.Phone</td>
                 <td>@restaurant.Capacity</td>
-                <td>@restaurant.OpenHour</td>
-                <td>@restaurant.CloseHour</td>
+                <td>@restaurant.OpenHour.ToShortTimeString()</td>
+                <td>@restaurant.CloseHour.ToShortTimeString()</td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", "Restaurants", new { id = restaurant.Id }, null)
                     |
