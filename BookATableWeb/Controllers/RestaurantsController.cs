@@ -36,20 +36,23 @@ namespace BookATableWeb.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View();
             }
-            Restaurant restaurant = new Restaurant();
-            restaurant.Name = model.Name;
-            restaurant.Address = model.Address;
-            restaurant.Email = model.Email;
-            restaurant.OpenHour = model.OpenHour;
-            restaurant.CloseHour = model.CloseHour;
-            restaurant.Phone = model.Phone;
-            restaurant.Capacity = model.Capacity;
-            restaurant.ManagerId = model.ManagerId;
-            RestaurantsRepository repository = new RestaurantsRepository();
-            repository.Insert(restaurant);
-            return RedirectToAction("Index");
+            else
+            {
+                Restaurant restaurant = new Restaurant();
+                restaurant.Name = model.Name;
+                restaurant.Address = model.Address;
+                restaurant.Email = model.Email;
+                restaurant.OpenHour = model.OpenHour;
+                restaurant.CloseHour = model.CloseHour;
+                restaurant.Phone = model.Phone;
+                restaurant.Capacity = model.Capacity;
+                restaurant.ManagerId = model.ManagerId;
+                RestaurantsRepository repository = new RestaurantsRepository();
+                repository.Insert(restaurant);
+                return RedirectToAction("Index");
+            }
         }
         [Authorize(Roles = "Manager,Admin")]
         public ActionResult Edit(int Id)

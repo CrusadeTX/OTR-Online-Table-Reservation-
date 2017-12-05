@@ -1,41 +1,43 @@
-﻿@model List<DataAccess.Entities.Reservation>
+﻿@model BookATableWeb.ViewModels.ReservationsListViewModel
+
 @{
     ViewBag.Title = "Index";
+ 
 }
 
-<h2>Restaurants</h2>
-@Html.ActionLink("Add","Add","Restaurants")
+<h2>Reservations</h2>
+@Html.ActionLink("Create", "Create", "Reservations")
 <table class="table">
 
     <thead>
-    <tr>
-        <th>Name</th>
-        <th>Address</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Capacity</th>
-        <th>OpenHour</th>
-        <th>CloseHour</th>
-    </tr>
+        <tr>
+            <th>ReservationTime</th>
+            <th>People Count</th>
+            <th>Comment</th>
+            <th>Restaurant</th>
+            <th>User</th>
+        </tr>
     </thead>
     <tbody>
-        @foreach (var restaurant in Model)
+        @foreach (var reservation in Model.Reservation)
         {
-            <tr>
-                <td>@restaurant.Name</td>
-                <td>@restaurant.Address</td>
-                <td>@restaurant.Email</td>
-                <td>@restaurant.Phone</td>
-                <td>@restaurant.Capacity</td>
-                <td>@restaurant.OpenHour</td>
-                <td>@restaurant.CloseHour</td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", "Restaurants",new {id=restaurant.Id },null)
-                    @Html.ActionLink("Delete", "Delete", "Restaurants", new { id = restaurant.Id }, null)
 
-                </td>
-            </tr>
+           
+
+                <tr>
+                    <td>@reservation.ReservationTime</td>
+                    <td>@reservation.PeopleCount</td>
+                    <td>@reservation.Comment</td>
+                    <td>@reservation.RestaurantId</td>
+                    <td>@reservation.UserId</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Reservations", new { id = reservation.Id }, null)
+                        |
+                        @Html.ActionLink("Delete", "Delete", "Reservations", new { id = reservation.Id }, null)
+
+                    </td>
+                </tr>
+            
         }
-</tbody>
+    </tbody>
 </table>
-
