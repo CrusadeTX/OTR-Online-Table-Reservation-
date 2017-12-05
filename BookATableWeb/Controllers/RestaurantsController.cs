@@ -9,9 +9,11 @@ using BookATableWeb.ViewModels;
 
 namespace BookATableWeb.Controllers
 {
+   // [Authorize(Roles = "Admin,Manager,Customer")]
     public class RestaurantsController : Controller
     {
         // GET: Restaurants
+        [Authorize(Roles = "Customer,Manager,Admin")]
         public ActionResult Index()
         {
             RestaurantsRepository repository = new RestaurantsRepository();
@@ -21,6 +23,7 @@ namespace BookATableWeb.Controllers
             return View(model);
         }
 
+        [Authorize(Roles = "Manager,Admin")]
         public ActionResult Create()
         {
 
@@ -48,7 +51,7 @@ namespace BookATableWeb.Controllers
             repository.Insert(restaurant);
             return RedirectToAction("Index");
         }
-        
+        [Authorize(Roles = "Manager,Admin")]
         public ActionResult Edit(int Id)
         {
 
@@ -96,7 +99,7 @@ namespace BookATableWeb.Controllers
 
 
 
-
+        [Authorize(Roles = "Manager,Admin")]
         public ActionResult Delete()
         {
             return View();

@@ -9,6 +9,7 @@ using BookATableWeb.ViewModels;
 
 namespace BookATableWeb.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         // GET: User
