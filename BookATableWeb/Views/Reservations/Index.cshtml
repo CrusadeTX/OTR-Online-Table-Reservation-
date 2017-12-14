@@ -28,7 +28,22 @@
                     <td>@reservation.ReservationTime</td>
                     <td>@reservation.PeopleCount</td>
                     <td>@reservation.Comment</td>
-                    <td>@reservation.RestaurantId</td>
+                    @foreach (var restaurant in Model.Restaurants)
+                    {
+                        if (reservation.RestaurantId == restaurant.Id)
+                        {
+                            <td> @restaurant.Name </td>
+                        }
+
+                    }
+                    @foreach (var user in Model.Users)
+                    {
+                        if (reservation.UserId == user.Id)
+                        {
+                            <td> @user.Name </td>
+                        }
+
+                    }
                     <td>@reservation.UserId</td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", "Reservations", new { id = reservation.Id }, null)
