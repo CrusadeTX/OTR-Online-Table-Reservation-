@@ -42,6 +42,10 @@ namespace BookATableWeb.Controllers
         {
             if (!ModelState.IsValid)
             {
+                UsersRepository rep = new UsersRepository();
+                ViewBag.UserId = new SelectList(rep.GetAll(), "Id", "Name");
+                RestaurantsRepository repo = new RestaurantsRepository();
+                ViewBag.RestaurantId = new SelectList(repo.GetAll(), "Id", "Name");
                 return View();
             }
             else
@@ -82,7 +86,12 @@ namespace BookATableWeb.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                UsersRepository rep = new UsersRepository();
+                ViewBag.UserId = new SelectList(rep.GetAll(), "Id", "Name");
+                RestaurantsRepository repos = new RestaurantsRepository();
+                ViewBag.RestaurantId = new SelectList(repos.GetAll(), "Id", "Name");
+                return View();
+                
             }
             Reservation reservation = new Reservation();
             reservation.Id = model.Id;

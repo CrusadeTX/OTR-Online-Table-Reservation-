@@ -32,7 +32,7 @@ namespace BookATableWeb.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View();
             }
             User user = new User();
             user.Name = model.Name;
@@ -66,7 +66,7 @@ namespace BookATableWeb.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View();
             }
             User user = new User();
             user.Name = model.Name;
