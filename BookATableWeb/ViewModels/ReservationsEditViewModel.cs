@@ -11,17 +11,12 @@ namespace BookATableWeb.ViewModels
         [Required]
         public int UserId { get; set; }
         [Required]
-
         public int ResraurantId { get; set; }
         [Required]
-
         public int PeopleCount { get; set; }
-        [Required]
-
         public string Comment { get; set; }
         [Required]
         public DateTime ReservationTime { get; set; }
-
         public int Id { get; set; }
     }
 }
