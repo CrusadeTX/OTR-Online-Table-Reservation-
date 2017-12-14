@@ -14,16 +14,18 @@ namespace BookATableWeb.ViewModels
         [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$", ErrorMessage = "Please insert a valid name.")]
         public string Name { get; set; }
         [Required]
-        [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$", ErrorMessage = "Please insert a valid name.")]
+        [StringLength(50, MinimumLength = 5, ErrorMessage ="Please insert a valid address.")]
         public string Address { get; set; }
         [Required]
-        [RegularExpression(@"/^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/gm", ErrorMessage = "Please insert a valid name.")]
+        [DataType(DataType.PhoneNumber)]
+        [Phone]
         public string Phone { get; set; }
         [Required]
-        [RegularExpression(@"/^([A-Z|a-z|0-9](\.|_){0,1})+[A-Z|a-z|0-9]\@([A-Z|a-z|0-9])+((\.){0,1}[A-Z|a-z|0-9]){2}\.[a-z]{2,3}$/gm", ErrorMessage = "Please insert a valid email.")]
+        [DataType(DataType.EmailAddress)]
+        [EmailAddress]
         public string Email { get; set; }
         [Required]
-        [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*$", ErrorMessage = "Please insert a valid name.")]
+        [RegularExpression("^[1-9][0-9]+$", ErrorMessage = "Please insert visitors between 1-99.")]
         public int Capacity { get; set; }
         [Required]
         public DateTime OpenHour {get;set;}

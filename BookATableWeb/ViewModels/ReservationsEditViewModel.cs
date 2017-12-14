@@ -13,7 +13,9 @@ namespace BookATableWeb.ViewModels
         [Required]
         public int ResraurantId { get; set; }
         [Required]
+        [RegularExpression(@"[1-9][0-9]", ErrorMessage = "Please insert a valid count.")]
         public int PeopleCount { get; set; }
+        [StringLength(50, ErrorMessage = "Please insert a valid comment.")]
         public string Comment { get; set; }
         [Required]
         public DateTime ReservationTime { get; set; }

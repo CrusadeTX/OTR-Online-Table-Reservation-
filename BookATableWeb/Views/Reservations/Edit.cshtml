@@ -9,7 +9,7 @@
     <div class="form-horizontal">
         <div class="form-group">
             @Html.LabelFor(model => model.ReservationTime, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(model => model.ReservationTime, new { @class = "control-label col-md-10" })
+            @Html.TextBoxFor(model => model.ReservationTime, new { @class = "control-label col-md-10", type = "datetime-local" })
             @Html.ValidationMessageFor(model => model.ReservationTime)
         </div>
         <div class="form-group">

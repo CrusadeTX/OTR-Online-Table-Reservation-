@@ -34,12 +34,12 @@
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.OpenHour, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(model => model.OpenHour, new { @class = "control-label col-md-10" })
+            @Html.TextBoxFor(model => model.OpenHour, new { @class = "control-label col-md-10", type = "time" })
             @Html.ValidationMessageFor(model => model.OpenHour)
         </div>
         <div class="form-group">
             @Html.LabelFor(model => model.CloseHour, new { @class = "control-label col-md-2" })
-            @Html.TextBoxFor(model => model.CloseHour, new { @class = "control-label col-md-10" })
+            @Html.TextBoxFor(model => model.CloseHour, new { @class = "control-label col-md-10", type = "time" })
             @Html.ValidationMessageFor(model => model.CloseHour)
         </div>
         <div class="form-group">
