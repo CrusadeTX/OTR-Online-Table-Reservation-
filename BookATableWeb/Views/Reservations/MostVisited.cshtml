@@ -1,0 +1,140 @@
+﻿@model BookATableWeb.ViewModels.MostVisitedCreateViewModel
+
+@{
+    ViewBag.Title = "MostVisited";
+}
+
+<h2>MostVisitedWeekly</h2>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>ReservationTime</th>
+            <th>People Count</th>
+            <th>Comment</th>
+            <th>Restaurant</th>
+            <th>User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model.mostVisitedWeekly)
+        {
+
+
+
+            <tr>
+                <td>@reservation.ReservationTime</td>
+                <td>@reservation.PeopleCount</td>
+                <td>@reservation.Comment</td>
+                @foreach (var restaurant in Model.Restaurants)
+                {
+                    if (reservation.RestaurantId == restaurant.Id)
+                    {
+                        <td> @restaurant.Name </td>
+                    }
+
+                }
+                @foreach (var user in Model.Users)
+                {
+                    if (reservation.UserId == user.Id)
+                    {
+                        <td> @user.Name </td>
+                    }
+
+                }
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+
+<h2>MostVisitedMonthly</h2>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>ReservationTime</th>
+            <th>People Count</th>
+            <th>Comment</th>
+            <th>Restaurant</th>
+            <th>User</th>
+        </tr>
+    </thead>
+
+
+    <tbody>
+        @foreach (var reservation in Model.mostVisitedMonthly)
+        {
+
+
+
+            <tr>
+                <td>@reservation.ReservationTime</td>
+                <td>@reservation.PeopleCount</td>
+                <td>@reservation.Comment</td>
+                @foreach (var restaurant in Model.Restaurants)
+                {
+                    if (reservation.RestaurantId == restaurant.Id)
+                    {
+                        <td> @restaurant.Name </td>
+                    }
+
+                }
+                @foreach (var user in Model.Users)
+                {
+                    if (reservation.UserId == user.Id)
+                    {
+                        <td> @user.Name </td>
+                    }
+
+                }
+            </tr>
+
+        }
+    </tbody>
+</table>
+
+<h2>MostVisitedYearly</h2>
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>ReservationTime</th>
+            <th>People Count</th>
+            <th>Comment</th>
+            <th>Restaurant</th>
+            <th>User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var reservation in Model.mostVisitedYearly)
+        {
+
+
+
+            <tr>
+                <td>@reservation.ReservationTime</td>
+                <td>@reservation.PeopleCount</td>
+                <td>@reservation.Comment</td>
+                @foreach (var restaurant in Model.Restaurants)
+                {
+                    if (reservation.RestaurantId == restaurant.Id)
+                    {
+                        <td> @restaurant.Name </td>
+                    }
+
+                }
+                @foreach (var user in Model.Users)
+                {
+                    if (reservation.UserId == user.Id)
+                    {
+                        <td> @user.Name </td>
+                    }
+
+                }
+            </tr>
+
+        }
+    </tbody>
+</table>

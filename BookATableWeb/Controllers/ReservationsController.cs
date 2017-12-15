@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using DataAccess.Repositories;
 using DataAccess.Entities;
 using BookATableWeb.ViewModels;
+using BookATableWeb.Models;
 
 namespace BookATableWeb.Controllers
 {
@@ -15,15 +16,19 @@ namespace BookATableWeb.Controllers
         // GET: Reservations
         public ActionResult Index()
         {
+
             ReservationsRepository repository = new ReservationsRepository();
-            List<Reservation> reservations = repository.GetAll();
             ReservationsListViewModel model = new ReservationsListViewModel();
-            model.Reservation = reservations;
+
             RestaurantsRepository rep = new RestaurantsRepository();
-            List<Restaurant> restaurants = rep.GetAll();
-            model.Restaurants = restaurants;
             UsersRepository repo = new UsersRepository();
+
+            List<Reservation> reservations = repository.GetActive();
+            List<Restaurant> restaurants = rep.GetAll();
             List<User> users = repo.GetAll();
+            
+            model.Reservation = reservations;
+            model.Restaurants = restaurants;
             model.Users = users;
             return View(model);
         }
@@ -119,6 +124,29 @@ namespace BookATableWeb.Controllers
 
             rep.Delete(reservation);
             return RedirectToAction("Index");
+        }
+        [Authorize(Roles = "Manager")]
+        public ActionResult MostVisited()
+        {
+            MostVisitedCreateViewModel mostVisited = new MostVisitedCreateViewModel();
+            DateTime dateWeek = DateTime.Now.AddDays(-7);
+            DateTime dateMonth = DateTime.Now.AddMonths(-1);
+            DateTime dateYear = DateTime.Now.AddYears(-1);
+            ReservationsRepository repository = new ReservationsRepository();
+            RestaurantsRepository rep = new RestaurantsRepository();
+            List<Restaurant> restaurants = rep.GetAll();
+            mostVisited.Restaurants = restaurants;
+            UsersRepository repo = new UsersRepository();
+            List<User> users = repo.GetAll();
+            mostVisited.Users = users;
+            //mostVisited.mostVisitedWeekly = repository.GetAll(n => n.ReservationTime > dateWeek && n.ReservationTime < DateTime.Now);
+            mostVisited.mostVisitedWeekly = repository.GetAll(dateWeek);
+            mostVisited.mostVisitedMonthly = repository.GetAll(dateMonth);
+            mostVisited.mostVisitedYearly = repository.GetAll(dateYear);
+            //mostVisited.mostVisitedMonthly = repository.GetAll(n => n.ReservationTime > dateMonth && n.ReservationTime < DateTime.Now);
+            //mostVisited.mostVisitedYearly = repository.GetAll(n => n.ReservationTime > dateYear && n.ReservationTime < DateTime.Now);
+            return View(mostVisited);
+            
         }
 
     }

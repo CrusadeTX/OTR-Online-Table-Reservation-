@@ -181,6 +181,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\MostVisitedCreateViewModel.cs" />
     <Compile Include="ViewModels\ReservationsCreateViewModel.cs" />
     <Compile Include="ViewModels\ReservationsEditViewModel.cs" />
     <Compile Include="ViewModels\ReservationsListViewModel.cs" />
@@ -259,6 +260,7 @@
     <Content Include="Views\Reservations\Create.cshtml" />
     <Content Include="Views\Reservations\Edit.cshtml" />
     <Content Include="Views\Reservations\Delete.cshtml" />
+    <Content Include="Views\Reservations\MostVisited.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
