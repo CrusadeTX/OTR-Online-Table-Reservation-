@@ -125,7 +125,7 @@ namespace BookATableWeb.Controllers
             rep.Delete(reservation);
             return RedirectToAction("Index");
         }
-        [Authorize(Roles = "Manager")]
+        [Authorize(Roles = "Manager,Admin")]
         public ActionResult MostVisited()
         {
             MostVisitedCreateViewModel mostVisited = new MostVisitedCreateViewModel();
